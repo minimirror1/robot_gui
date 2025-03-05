@@ -1,11 +1,10 @@
 import sys
-from PySide6.QtWidgets import QApplication, QMainWindow
+from PySide6.QtWidgets import QApplication
+from mainwindow import MainWindow
 
 def main():
     app = QApplication(sys.argv)
-    window = QMainWindow()
-    window.setWindowTitle("Robot GUI")
-    window.resize(800, 600)
+    window = MainWindow()
     window.show()
     sys.exit(app.exec())
 
