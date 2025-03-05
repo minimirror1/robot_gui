@@ -3,6 +3,7 @@ from PySide6.QtWidgets import QMainWindow, QApplication
 from PySide6.QtCore import Qt  # Qt 플래그를 사용하기 위해 추가
 
 from ui.mainwindow_ui import Ui_MainWindow  # Designer에서 uic로 생성된 UI 클래스
+from jog_page import JogPage
 
 # 아래 import는 나중에 구현될 페이지들을 위한 것입니다
 # from robot_gui_pkg.src.home_page import HomePage
@@ -45,12 +46,18 @@ class MainWindow(QMainWindow):
         
     def init_ui(self):
         """UI 요소 초기화 및 이벤트 연결"""
+
+        # JogPage UI 초기화
+        self.jog_page = JogPage()
+        self.ui.mainPage.addWidget(self.jog_page)
+
         """
         # 메뉴 버튼 클릭 이벤트 연결
         self.ui.menuButton.clicked.connect(self.toggle_menu)
         
         # 페이지 버튼 클릭 이벤트 연결
         self.ui.homeButton.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(0))
+        
         self.ui.jogButton.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(1))
         self.ui.settingButton.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(2))
         self.ui.helpButton.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(3))
